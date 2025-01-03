@@ -22,4 +22,4 @@ chown -R postgres:postgres /var/lib/postgresql/data
 chown -R postgres:postgres /etc/postgresql
 
 # Run PostgreSQL as the postgres user using gosu
-exec gosu postgres postgres -D /var/lib/postgresql/data --config-file=/etc/postgresql/postgresql.conf
+exec gosu postgres postgres -D /var/lib/postgresql/data
