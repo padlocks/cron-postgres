@@ -1,0 +1,1 @@
+docker run --name postgresdb --volume=db:/var/lib/postgresql/data --volume=postgres_backup:/postgres_backup -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 --restart=unless-stopped -d postgres:latest
