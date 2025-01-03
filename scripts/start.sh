@@ -18,5 +18,8 @@ fi
 # Change ownership of PostgreSQL data directory
 chown -R $NEW_USER:$NEW_USER /var/lib/postgresql/data
 
+# Ensure the PostgreSQL configuration directory is owned by the new user
+chown -R $NEW_USER:$NEW_USER /etc/postgresql
+
 # Run PostgreSQL as the new user
-su - $NEW_USER -c "postgres -D /var/lib/postgresql/data --config-file=/etc/postgresql/postgresql.conf"
+exec su - $NEW_USER -c "postgres -D /var/lib/postgresql/data --config-file=/etc/postgresql/postgresql.conf"
