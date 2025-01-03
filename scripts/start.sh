@@ -21,5 +21,10 @@ chown -R postgres:postgres /var/lib/postgresql/data
 # Ensure the PostgreSQL configuration directory is owned by the postgres user
 chown -R postgres:postgres /etc/postgresql
 
+# Initialize the PostgreSQL data directory if it is not already initialized
+if [ ! -s /var/lib/postgresql/data/PG_VERSION ]; then
+    su - postgres -c "/usr/lib/postgresql/$(pg_config --version | cut -d ' ' -f 2)/bin/initdb -D /var/lib/postgresql/data"
+fi
+
 # Run PostgreSQL as the postgres user using gosu
 exec gosu postgres postgres -D /var/lib/postgresql/data
