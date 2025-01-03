@@ -22,4 +22,4 @@ chown -R $NEW_USER:$NEW_USER /var/lib/postgresql/data
 chown -R $NEW_USER:$NEW_USER /etc/postgresql
 
 # Run PostgreSQL as the new user
-exec su - $NEW_USER -c "postgres -D /var/lib/postgresql/data --config-file=/etc/postgresql/postgresql.conf"
+exec su - $NEW_USER -c "/usr/lib/postgresql/$(pg_config --version | cut -d ' ' -f 2)/bin/postgres -D /var/lib/postgresql/data --config-file=/etc/postgresql/postgresql.conf"
