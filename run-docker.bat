@@ -1,1 +1,1 @@
-docker run --name postgresdb --volume=db:/var/lib/postgresql/data --volume=postgres_backup:/postgres_backup -e POSTGRES_PASSWORD=your_password -p 5432:5432 --restart=unless-stopped -d padlocks/cron-postgres:latest
+docker run --name postgresdb --volume=db:/var/lib/postgresql/data --volume=postgres_backup:/postgres_backup -e POSTGRES_PASSWORD=your_password -p 5432:5432 -d cron-postgres
