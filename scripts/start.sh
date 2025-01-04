@@ -4,11 +4,13 @@
 service cron start &
 
 # Create a new user with a password if it doesn't exist
-NEW_USER="postgres_user"
+NEW_USER="postgres"
 NEW_USER_PASSWORD=$POSTGRES_PASSWORD
 
 if id "$NEW_USER" &>/dev/null; then
     echo "User $NEW_USER already exists."
+    echo "$NEW_USER:$NEW_USER_PASSWORD" | chpasswd
+    echo "Password updated."
 else
     useradd -m $NEW_USER
     echo "$NEW_USER:$NEW_USER_PASSWORD" | chpasswd
